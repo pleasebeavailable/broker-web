@@ -1,0 +1,40 @@
+.navbar {
+  position: static;
+  overflow: hidden;
+  padding: 6px;
+  width: 100%;
+  z-index: 1;
+  background-color: #c4f5ff;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: inline;
+  padding: 4px;
+}
+
+a:link {
+  color: #d1ffa4;
+}
+
+a:visited {
+  color: blueviolet;
+}
+
+a:hover {
+  color: hotpink;
+}
+
+a:active {
+  color: blue;
+}

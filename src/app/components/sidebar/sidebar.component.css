@@ -1,0 +1,32 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: "Helvetica Neue", Helvetica, Arial;
+}
+
+.sidebar {
+  position: fixed;
+  background-color: #f7ff94;
+  overflow-x: hidden;
+  z-index: 1;
+  height: 100%;
+  display: block;
+}
+
+ul {
+  margin: 0px;
+  padding: 0px;
+}
+
+ul li {
+  list-style: none;
+}
+
+ul li a {
+  color: white;
+  border-bottom: 1px solid #111;
+  display: block;
+  width: 180px;
+  padding: 10px;
+  text-decoration: none;
+}

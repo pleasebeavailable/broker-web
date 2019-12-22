@@ -1,0 +1,31 @@
+h2 {
+  text-align: center;
+  padding: 6px;
+  font-family: Chilanka;
+  background-color: #d1ffa4;
+
+}
+
+label {
+  border: 1px solid blue;
+  padding: 4px;
+  background-color: #d1ffa4;
+}
+
+input:focus {
+  background: #d1ffa4;
+}
+
+.btn {
+  background: #d1ffa4;
+}
+
+.login-body {
+  background-image: url("src/assets/images/img.png");
+  background-size: 100%;
+  z-index: 1;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+

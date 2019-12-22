@@ -1,0 +1,45 @@
+h2 {
+  text-align: center;
+  padding: 6px;
+  font-family: Chilanka;
+  background-color: #d1ffa4;
+
+}
+
+label {
+  border: 1px solid blue;
+  padding: 4px;
+  background-color: #d1ffa4;
+}
+
+input:focus {
+  background: #d1ffa4;
+}
+
+.container-fluid {
+  height: 100%;
+}
+
+.btn {
+  background: #d1ffa4;
+}
+
+.wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.left-side label {
+  margin-top: 10px;
+}
+
+.left-side input {
+  width: 40%;
+  margin-top: 5px;
+}
+
+.right-side {
+  background-image: url("src/assets/images/hand-money.png");
+  background-repeat: no-repeat;
+  background-size: 65%;
+}
