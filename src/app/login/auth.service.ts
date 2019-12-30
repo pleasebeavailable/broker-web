@@ -17,7 +17,7 @@ export class AuthService {
   }
 
   login(username, password) {
-    return this.http.post(AppConstants.BACKEND_URL + 'users/authenticate', {username, password})
+    return this.http.post(AppConstants.BACKEND_URL + 'api/authenticate', {username, password})
       .pipe(map((res) => {
         this.username = username;
         this.password = password;

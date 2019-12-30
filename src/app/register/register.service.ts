@@ -21,6 +21,6 @@ export class RegisterService {
 
   public register(user: User): Observable<{}> {
     console.log(user);
-    return this.httpClient.post(AppConstants.BACKEND_URL + 'users/register', user, httpOptions); //`${config.appUrl}
+    return this.httpClient.post(AppConstants.BACKEND_URL + 'api/register', user, httpOptions); //`${config.appUrl}
   }
 }
