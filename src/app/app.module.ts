@@ -19,6 +19,7 @@ import {ContentComponent} from './components/content/content.component';
 import {PortfolioComponent} from './portfolio/portfolio.component';
 import {SharedModule} from './_shared/shared.module';
 import {CommonModule} from '@angular/common';
+import {UserComponent} from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import {CommonModule} from '@angular/common';
     HeaderComponent,
     WebLayoutComponent,
     ContentComponent,
+    UserComponent,
     PortfolioComponent,
   ],
   imports: [
