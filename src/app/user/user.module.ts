@@ -1,27 +1,27 @@
 import {RouterModule, Routes} from '@angular/router';
-import {PortfolioComponent} from './portfolio.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
+import {UserComponent} from './user.component';
 import {SharedModule} from '../_shared/shared.module';
 
 
-const PORTFOLIO_ROUTES: Routes = [
+const USER_ROUTES: Routes = [
 
   {
     path: '',
-    component: PortfolioComponent
+    component: UserComponent
   }
 ];
 
 @NgModule({
-  declarations: [PortfolioComponent],
+  declarations: [UserComponent],
   imports: [CommonModule,
     SharedModule,
-    RouterModule.forChild(PORTFOLIO_ROUTES),
+    RouterModule.forChild(USER_ROUTES),
     ReactiveFormsModule,
     FormsModule
   ]
 })
-export class PortfolioModule {
+export class UserModule {
 }
