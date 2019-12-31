@@ -9,16 +9,17 @@ import {AuthService} from './core';
 })
 export class AppComponent {
   active = true;
+  private currentUser;
 
   constructor(
     private router: Router,
     private authService: AuthService
   ) {
+    if (authService.isUserLoggedIn() !== true) {
+      this.router.navigate(['login']);
+    }
+
   }
 
-  logout() {
-    this.authService.logout();
-    this.router.navigate(['/login']);
-  }
 
 }

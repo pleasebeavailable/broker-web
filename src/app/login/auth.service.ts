@@ -8,7 +8,6 @@ import {AppConstants} from '../_shared/AppConstants';
   providedIn: 'root'
 })
 export class AuthService {
-  currentUser: Observable<any>;
   private USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser';
   private username: string;
   private password: string;
