@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from './user.service';
-import {User} from '../model/User';
+import {User} from '../_model/User';
 import {AuthService} from '../login/auth.service';
 
 @Component({
@@ -13,12 +13,15 @@ export class UserComponent implements OnInit {
   private username: string = sessionStorage.getItem('authenticatedUser');
   private user: User;
   private currentUser;
+
   constructor(private userService: UserService, private authService: AuthService) {
   }
 
   ngOnInit() {
-    this.userService.getUser(this.username).subscribe( user => this.user = user);
-    this.currentUser = this.authService.isUserLoggedIn();
+    if (this.authService.isUserLoggedIn()) {
+      this.userService.getUser(this.username).subscribe(user => this.user = user);
+      this.currentUser = this.authService.isUserLoggedIn();
+    }
   }
 
 }

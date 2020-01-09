@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {BehaviorSubject, Observable, throwError} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {AppConstants} from '../_shared/AppConstants';
 

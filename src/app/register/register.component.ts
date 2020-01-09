@@ -5,7 +5,7 @@ import {first} from 'rxjs/operators';
 import {AlertService} from '../_service/alert.service';
 import {Router} from '@angular/router';
 import {Location} from '@angular/common';
-import {User} from '../model/User';
+import {User} from '../_model/User';
 import {AppMethods} from '../_shared/AppMethods';
 
 @Component({

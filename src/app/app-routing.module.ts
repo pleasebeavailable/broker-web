@@ -9,6 +9,7 @@ import {SharedModule} from './_shared/shared.module';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
+  {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'logout', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
