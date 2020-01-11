@@ -18,10 +18,6 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.authService.isUserLoggedIn()) {
-      this.userService.getUser(this.username).subscribe(user => this.user = user);
-      this.currentUser = this.authService.isUserLoggedIn();
-    }
   }
 
 }
