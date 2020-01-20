@@ -1,12 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {RegisterService} from './register.service';
-import {first} from 'rxjs/operators';
 import {AlertService} from '../_service/alert.service';
 import {Router} from '@angular/router';
 import {Location} from '@angular/common';
 import {User} from '../_model/User';
 import {AppMethods} from '../_shared/AppMethods';
+import {AuthService} from '../_service/auth.service';
+import {SelectOption} from '../_model/select-option.model';
+import {Role} from '../_model/Role';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,9 @@ import {AppMethods} from '../_shared/AppMethods';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private registerService: RegisterService, private alertService: AlertService, private router: Router, private location: Location) {
+  roles: Array<SelectOption>;
+
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private alertService: AlertService, private router: Router, private location: Location) {
   }
 
   get f() {
@@ -31,6 +34,11 @@ export class RegisterComponent implements OnInit {
 
 
   ngOnInit() {
+    this.roles = [];
+    Object.keys(Role).forEach(role => {
+      this.roles.push(new SelectOption(Role[role], role));
+    });
+
     this.registerForm = this.formBuilder.group({
       username: ['', [Validators.required]],
       firstName: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
@@ -41,13 +49,16 @@ export class RegisterComponent implements OnInit {
         [
           Validators.required,
           AppMethods.matchValues('password')
-        ]]
+        ]],
+      role: ''
     });
+
   }
 
   onSubmit() {
     if (this.registerForm.valid) {
-      this.registerService.register(this.registerForm.value)
+      console.log(this.registerForm.value);
+      this.authService.register(this.registerForm.value)
         .pipe()
         .subscribe(
           data => {
@@ -64,19 +75,15 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  createUser(): User {
-    const form = this.registerForm.value;
-    this.user = new User();
-    this.user.username = form.username;
-    this.user.firstName = form.firstName;
-    this.user.lastName = form.lastName;
-    this.user.email = form.email;
-    this.user.password = form.password;
-
-    return this.user;
-  }
-
   goBack() {
     this.location.back();
+  }
+
+  refreshRoleValue(value: any) {
+    this.registerForm.controls.role.patchValue(value.value);
+  }
+
+  onRoleClear() {
+    this.registerForm.controls.role.patchValue('');
   }
 }

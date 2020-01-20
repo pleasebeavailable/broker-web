@@ -14,6 +14,9 @@ import {SharedModule} from './_shared/shared.module';
 import {CommonModule} from '@angular/common';
 import {UserModule} from './user/user.module';
 import {PortfolioModule} from './portfolio/portfolio.module';
+import {TokenStorage} from './login/token.storage';
+import {SelectModule} from 'ng-select';
+
 
 @NgModule({
   declarations: [
@@ -33,9 +36,10 @@ import {PortfolioModule} from './portfolio/portfolio.module';
     HttpClientModule,
     AppRoutingModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    SelectModule
   ],
-  providers: [],
+  providers: [TokenStorage],
   bootstrap: [AppComponent]
 })
 export class AppModule {

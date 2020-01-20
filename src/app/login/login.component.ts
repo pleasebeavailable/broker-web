@@ -4,6 +4,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../core';
 import {first} from 'rxjs/operators';
 import {Observable} from 'rxjs';
+import {TokenStorage} from './token.storage';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -16,20 +18,31 @@ export class LoginComponent implements OnInit {
   submitted = false;
   returnUrl: string;
   error: string;
+  isLoggedIn = false;
+  roles: string[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private tokenStorage: TokenStorage
   ) {
   }
 
   ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
-    });
+
+    if (this.tokenStorage.getToken() === null) {
+      if (this.tokenStorage.getToken()) {
+        this.isLoggedIn = true;
+        this.roles = this.tokenStorage.getUser().roles;
+      } else {
+        this.loginForm = this.formBuilder.group({
+          username: ['', Validators.required],
+          password: ['', Validators.required]
+        });
+      }
+    }
 
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
   }
@@ -45,15 +58,23 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.authService.login(this.loginForm.value.username, this.loginForm.value.password)
-      .pipe(first())
       .subscribe(
-        data => {
-          this.router.navigate([this.returnUrl]);
+        user => {
+          console.log('blll' + user);
+          this.tokenStorage.saveToken(user.token);
+          this.tokenStorage.saveUser(user);
+
+          this.isLoggedIn = true;
+          this.roles = this.tokenStorage.getUser().roles;
+          this.reloadPage();
         },
-        (error: any) => {
-          this.error = error.error.message;
-          this.loading = false;
+        err => {
+
         }
       );
+  }
+
+  private reloadPage() {
+    window.location.reload();
   }
 }

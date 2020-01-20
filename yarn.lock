@@ -854,6 +854,13 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@ng-select/ng-select@^3.7.1":
+  version "3.7.1"
+  resolved "https://registry.yarnpkg.com/@ng-select/ng-select/-/ng-select-3.7.1.tgz#cf357a6a65588605bd1288a8ee804d254c254514"
+  integrity sha512-wV1BpJCuxVU8aCf8t/nMrDp63oFgS2z7TB9BETm3Lul9AhI93JAM809VWkERGbQ9GQQvr7YDkPXvkGISqoUGgg==
+  dependencies:
+    tslib "^1.9.0"
+
 "@ngtools/webpack@8.3.19":
   version "8.3.19"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-8.3.19.tgz#9ed3123a9c3d79c49f73fd9a30cbe283ddde9d47"
@@ -5251,6 +5258,18 @@ neo-async@^2.5.0, neo-async@^2.6.0, neo-async@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
   integrity sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==
+
+ng-select@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/ng-select/-/ng-select-1.0.2.tgz#a1b196f8681907462598a09c85a17195ad4bf994"
+  integrity sha512-QMh5NqnYrsK18J8vmRBjpcv4o9euGd5Grs+4sutNNWWDX65rJlLh+S6oUq3uvo35S2v/ZMcMMR/e5f0gMlwxlA==
+  dependencies:
+    tslib "^1.9.0"
+
+ng2-select@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/ng2-select/-/ng2-select-2.0.0.tgz#99e66f147ae479ef171378cbc526e639ff4e2df7"
+  integrity sha512-UmbcPYOqkLlMXPl4G7sPF+BcU/GSrEHCOHnTyIAlsS3U2ALP90mOVb0XxE3GgT5A7OE/aF8ZUPXV3vubnvE/zA==
 
 nice-try@^1.0.4:
   version "1.0.5"

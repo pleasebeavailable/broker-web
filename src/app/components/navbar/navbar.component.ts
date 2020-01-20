@@ -11,7 +11,7 @@ import {AppComponent} from '../../app.component';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private appComponent: AppComponent, private router: Router) {
   }
 
   ngOnInit() {
@@ -26,7 +26,7 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logout();
+    this.appComponent.logout();
   }
 
 

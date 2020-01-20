@@ -1,9 +1,15 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {map} from 'rxjs/operators';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AppConstants} from '../_shared/AppConstants';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {User} from '../_model/User';
+import {Role} from '../_model/Role';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'
+  })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -22,24 +28,16 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
-  login(username, password) {
-    return this.http.post(AppConstants.BACKEND_URL + 'api/authenticate', {username, password})
-      .pipe(map(user => {
-        if (user) {
-          this.registerSuccessfulLogin(user);
-          if (user instanceof User) {
-            this.currentUserSubject.next(user);
-          }
-        }
-      }));
+  login(username: string, password: string): Observable<User> {
+    return this.http.post<User>(AppConstants.BACKEND_URL + 'api/authenticate', {username, password}, httpOptions);
   }
 
-  logout() {
-    sessionStorage.removeItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
-    this.currentUserSubject.next(null);
-  }
-
-  private registerSuccessfulLogin(user) {
-    sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, JSON.stringify(user));
+  register(data): Observable<any> {
+    return this.http.post(AppConstants.BACKEND_URL + 'api/register', {
+      username: data.username,
+      email: data.email,
+      roles: data.role,
+      password: data.password
+    }, httpOptions);
   }
 }
