@@ -14,7 +14,7 @@ import {SharedModule} from './_shared/shared.module';
 import {CommonModule} from '@angular/common';
 import {UserModule} from './user/user.module';
 import {PortfolioModule} from './portfolio/portfolio.module';
-import {TokenStorage} from './login/token.storage';
+import {TokenStorage} from './core/token.storage';
 import {SelectModule} from 'ng-select';
 
 

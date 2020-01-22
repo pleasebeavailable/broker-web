@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AppConstants} from '../_shared/AppConstants';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {User} from '../_model/User';
-import {Role} from '../_model/Role';
+import {TokenStorage} from '../core/token.storage';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -15,17 +15,12 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
-  private USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser';
   private currentUserSubject: BehaviorSubject<User>;
-  public currentUser: Observable<User>;
+  public currentUser$: Observable<User>;
 
-  constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME)));
-    this.currentUser = this.currentUserSubject.asObservable();
-  }
-
-  public get currentUserValue(): User {
-    return this.currentUserSubject.value;
+  constructor(private http: HttpClient, private tokenStorage: TokenStorage) {
+    this.currentUserSubject = new BehaviorSubject<User>(tokenStorage.getUser());
+    this.currentUser$ = this.currentUserSubject.asObservable();
   }
 
   login(username: string, password: string): Observable<User> {
@@ -35,9 +30,18 @@ export class AuthService {
   register(data): Observable<any> {
     return this.http.post(AppConstants.BACKEND_URL + 'api/register', {
       username: data.username,
+      firstName: data.firstName,
+      lastName: data.lastName,
       email: data.email,
-      roles: data.role,
+      role: data.role,
       password: data.password
     }, httpOptions);
   }
+
+  logout() {
+    this.tokenStorage.signOut();
+    window.location.reload();
+  }
+
+
 }

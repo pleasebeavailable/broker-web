@@ -9,9 +9,18 @@
     <li class="">
       <a class="" href="#">Disabled</a>
     </li>
+    <li>
+      <div *ngIf="userService.user" class="dropdown">
+        <a href="">Hello {{userService.user.username}}</a>
+        <div class="dropdown-content">
+          <a routerLink="">1</a>
+          <a routerLink="">2</a>
+          <a routerLink="">3</a>
+        </div>
+      </div>
+    </li>
   </ul>
   <form class="">
-    <input class="" type="search" placeholder="Search" aria-label="Search">
     <button class="btn " type="submit">Search</button>
   </form>
 </div>

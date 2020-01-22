@@ -1,3 +1,9 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: "Helvetica Neue", Helvetica, Arial;
+}
+
 .navbar {
   position: static;
   overflow: hidden;
@@ -14,11 +20,11 @@ ul {
   overflow: hidden;
 }
 
-li {
+ul li {
   float: left;
 }
 
-li a {
+ul li a {
   display: inline;
   padding: 4px;
 }
@@ -38,3 +44,5 @@ a:hover {
 a:active {
   color: blue;
 }
+
+

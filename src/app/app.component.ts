@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {AuthService} from './core';
 import {User} from './_model/User';
-import {TokenStorage} from './login/token.storage';
+import {TokenStorage} from './core/token.storage';
+import {AuthService} from './_service/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +12,7 @@ import {TokenStorage} from './login/token.storage';
 export class AppComponent implements OnInit {
   isLoggedIn = false;
   private currentUser: User;
-  private roles: string[];
+  private roles: string[] = [];
   showUserLayout = false;
 
   constructor(
@@ -20,22 +20,13 @@ export class AppComponent implements OnInit {
     private authService: AuthService,
     private tokenStorage: TokenStorage
   ) {
-    this.authService.currentUser.subscribe(x => this.currentUser = x);
+
   }
 
   ngOnInit() {
     this.isLoggedIn = !!this.tokenStorage.getToken();
-
-    if (this.isLoggedIn) {
-      const user = this.tokenStorage.getUser();
-      this.roles = user.roles;
-
-      this.showUserLayout = this.roles.includes('ROLE_USER');
-    }
-  }
-
-  logout() {
-    this.tokenStorage.signOut();
-    window.location.reload();
+    this.authService.currentUser$.subscribe(user => this.currentUser = user);
+    console.log(this.currentUser);
   }
 }
+

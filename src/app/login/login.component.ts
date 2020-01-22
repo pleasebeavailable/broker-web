@@ -1,11 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AuthService} from '../core';
-import {first} from 'rxjs/operators';
-import {Observable} from 'rxjs';
-import {TokenStorage} from './token.storage';
-import {HttpClient} from '@angular/common/http';
+import {TokenStorage} from '../core/token.storage';
+import {AuthService} from '../_service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -60,12 +57,9 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.loginForm.value.username, this.loginForm.value.password)
       .subscribe(
         user => {
-          console.log('blll' + user);
           this.tokenStorage.saveToken(user.token);
           this.tokenStorage.saveUser(user);
-
           this.isLoggedIn = true;
-          this.roles = this.tokenStorage.getUser().roles;
           this.reloadPage();
         },
         err => {
@@ -75,6 +69,6 @@ export class LoginComponent implements OnInit {
   }
 
   private reloadPage() {
-    window.location.reload();
+    this.router.navigate(['']);
   }
 }
