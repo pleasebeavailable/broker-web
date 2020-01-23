@@ -3,11 +3,11 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AlertService} from '../_service/alert.service';
 import {Router} from '@angular/router';
 import {Location} from '@angular/common';
-import {User} from '../_model/User';
+import {User} from '../_shared/_model/User';
 import {AppMethods} from '../_shared/AppMethods';
 import {AuthService} from '../_service/auth.service';
-import {SelectOption} from '../_model/select-option.model';
-import {Role} from '../_model/Role';
+import {SelectOption} from '../_shared/_model/select-option.model';
+import {Role} from '../_shared/_model/Role';
 
 @Component({
   selector: 'app-register',

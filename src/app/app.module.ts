@@ -18,12 +18,13 @@ import {TokenStorage} from './core/token.storage';
 import {SelectModule} from 'ng-select';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +37,7 @@ import {SelectModule} from 'ng-select';
     HttpClientModule,
     AppRoutingModule,
     RouterModule,
+    UserModule,
     SharedModule,
     SelectModule
   ],

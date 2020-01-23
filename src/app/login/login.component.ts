@@ -16,14 +16,13 @@ export class LoginComponent implements OnInit {
   returnUrl: string;
   error: string;
   isLoggedIn = false;
-  roles: string[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
-    private tokenStorage: TokenStorage
+    public tokenStorage: TokenStorage,
   ) {
   }
 
@@ -32,7 +31,6 @@ export class LoginComponent implements OnInit {
     if (this.tokenStorage.getToken() === null) {
       if (this.tokenStorage.getToken()) {
         this.isLoggedIn = true;
-        this.roles = this.tokenStorage.getUser().roles;
       } else {
         this.loginForm = this.formBuilder.group({
           username: ['', Validators.required],
@@ -57,7 +55,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.loginForm.value.username, this.loginForm.value.password)
       .subscribe(
         user => {
-          this.tokenStorage.saveToken(user.token);
+          this.tokenStorage.saveToken(user.jwttoken);
           this.tokenStorage.saveUser(user);
           this.isLoggedIn = true;
           this.reloadPage();

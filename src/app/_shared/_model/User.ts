@@ -7,7 +7,6 @@ export class User {
   lastName: string;
   email: string;
   password: string;
-  role: string;
-  rroles: Role;
-  token?: string;
+  roles: Array<Role>;
+  jwttoken?: string;
 }

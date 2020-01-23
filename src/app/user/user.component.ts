@@ -1,7 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {UserService} from './user.service';
-import {User} from '../_model/User';
-import {AuthService} from '../_service/auth.service';
+import {Component, Input, OnInit} from '@angular/core';
+import {AdminAuthGuard} from '../core/admin-auth-guard.service';
 
 @Component({
   selector: 'app-user',
@@ -10,14 +8,11 @@ import {AuthService} from '../_service/auth.service';
 })
 export class UserComponent implements OnInit {
 
-  private username: string = sessionStorage.getItem('authenticatedUser');
-  private user: User;
-  private currentUser;
-
-  constructor(private userService: UserService, private authService: AuthService) {
+  constructor(private adminAuthGuard: AdminAuthGuard) {
   }
 
   ngOnInit() {
+    console.log(this.adminAuthGuard.canActivate());
   }
 
 }

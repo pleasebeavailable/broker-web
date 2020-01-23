@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AppConstants} from '../_shared/AppConstants';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {User} from '../_model/User';
+import {User} from '../_shared/_model/User';
 import {TokenStorage} from '../core/token.storage';
 
 const httpOptions = {

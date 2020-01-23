@@ -4,6 +4,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {UserComponent} from './user.component';
 import {SharedModule} from '../_shared/shared.module';
+import {AppModule} from '../app.module';
 
 
 const USER_ROUTES: Routes = [
@@ -16,12 +17,12 @@ const USER_ROUTES: Routes = [
 
 @NgModule({
   declarations: [UserComponent],
-  imports: [CommonModule,
-    SharedModule,
-    RouterModule.forChild(USER_ROUTES),
-    ReactiveFormsModule,
-    FormsModule
-  ]
+    imports: [CommonModule,
+        SharedModule,
+        RouterModule.forChild(USER_ROUTES),
+        ReactiveFormsModule,
+        FormsModule
+    ]
 })
 export class UserModule {
 }
