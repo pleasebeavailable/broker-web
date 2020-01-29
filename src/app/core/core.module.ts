@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {AuthGuard} from './auth.guard';
+import {TokenStorage} from './token.storage';
 
 
 
 @NgModule({
   declarations: [],
+  providers: [AuthGuard, TokenStorage],
   imports: [
-    CommonModule,
   ]
 })
 export class CoreModule { }

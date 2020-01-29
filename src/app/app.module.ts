@@ -11,11 +11,10 @@ import {RouterModule} from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {RegisterComponent} from './register/register.component';
 import {SharedModule} from './_shared/shared.module';
-import {CommonModule} from '@angular/common';
 import {UserModule} from './user/user.module';
 import {PortfolioModule} from './portfolio/portfolio.module';
-import {TokenStorage} from './core/token.storage';
 import {SelectModule} from 'ng-select';
+import {CommonModule} from '@angular/common';
 
 
 
@@ -29,10 +28,10 @@ import {SelectModule} from 'ng-select';
   imports: [
     BrowserModule,
     CoreModule,
+    CommonModule,
     UserModule,
     PortfolioModule,
     FormsModule,
-    CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
@@ -41,7 +40,7 @@ import {SelectModule} from 'ng-select';
     SharedModule,
     SelectModule
   ],
-  providers: [TokenStorage],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

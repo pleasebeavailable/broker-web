@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from '../_shared/_model/User';
 import {AuthService} from '../_service/auth.service';
 import {UserService} from '../user/user.service';
@@ -16,6 +16,9 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (!this.authService.isLoggedIn()) {
+      this.authService.reloadPage();
+    }
   }
 
   gerUserDetails() {

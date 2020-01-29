@@ -1,5 +1,4 @@
-<app-web-layout></app-web-layout>
-<div class="container position-relative">
+<div class="container position-relative" *ngIf="authService.isLoggedIn()">
   <div class="row my-2">
     <div class="col-lg-8 order-lg-2">
       <ul class="nav nav-tabs">

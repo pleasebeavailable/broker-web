@@ -16,7 +16,10 @@ const USER_ROUTES: Routes = [
 ];
 
 @NgModule({
-  declarations: [UserComponent],
+    declarations: [UserComponent],
+    exports: [
+        UserComponent
+    ],
     imports: [CommonModule,
         SharedModule,
         RouterModule.forChild(USER_ROUTES),

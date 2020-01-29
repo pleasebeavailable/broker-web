@@ -6,6 +6,7 @@ import {HomeComponent} from './home/home.component';
 import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
 import {SharedModule} from './_shared/shared.module';
+import {AdminAuthGuard} from './core/admin-auth-guard.service';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -14,7 +15,7 @@ const routes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   {
-    path: 'user', canActivate: [AuthGuard],
+    path: 'user', canActivate: [AuthGuard, AdminAuthGuard],
     loadChildren: './user/user.module#UserModule'
   },
   {

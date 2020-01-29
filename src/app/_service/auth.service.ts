@@ -4,6 +4,7 @@ import {AppConstants} from '../_shared/AppConstants';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {User} from '../_shared/_model/User';
 import {TokenStorage} from '../core/token.storage';
+import {Router} from '@angular/router';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -18,7 +19,9 @@ export class AuthService {
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser$: Observable<User>;
 
-  constructor(private http: HttpClient, private tokenStorage: TokenStorage) {
+  constructor(private http: HttpClient, private router: Router,
+              private tokenStorage: TokenStorage) {
+    console.log(tokenStorage.getUser());
     this.currentUserSubject = new BehaviorSubject<User>(tokenStorage.getUser());
     this.currentUser$ = this.currentUserSubject.asObservable();
   }
@@ -43,5 +46,12 @@ export class AuthService {
     window.location.reload();
   }
 
+  isLoggedIn(): boolean {
+    return this.tokenStorage.getToken() === null ? false : true;
+  }
+
+  reloadPage() {
+    this.router.navigate(['/login']);
+  }
 
 }

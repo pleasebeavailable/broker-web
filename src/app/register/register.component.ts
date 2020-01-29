@@ -7,7 +7,7 @@ import {User} from '../_shared/_model/User';
 import {AppMethods} from '../_shared/AppMethods';
 import {AuthService} from '../_service/auth.service';
 import {SelectOption} from '../_shared/_model/select-option.model';
-import {Role} from '../_shared/_model/Role';
+import {Roles} from '../_shared/_model/Roles';
 
 @Component({
   selector: 'app-register',
@@ -35,8 +35,9 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.roles = [];
-    Object.keys(Role).forEach(role => {
-      this.roles.push(new SelectOption(Role[role], role));
+    Object.keys(Roles).forEach(role => {
+      this.roles.push(new SelectOption(Roles[role], role));
+      console.log(role);
     });
 
     this.registerForm = this.formBuilder.group({
