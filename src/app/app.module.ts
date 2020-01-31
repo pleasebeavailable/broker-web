@@ -34,11 +34,10 @@ import {CommonModule} from '@angular/common';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule,
     RouterModule,
-    UserModule,
     SharedModule,
-    SelectModule
+    SelectModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

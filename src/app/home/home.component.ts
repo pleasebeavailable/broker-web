@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from '../_shared/_model/User';
 import {AuthService} from '../_service/auth.service';
-import {UserService} from '../user/user.service';
+import {StockService} from '../_service/stock.service';
 
 @Component({
   selector: 'app-home',
@@ -10,19 +9,16 @@ import {UserService} from '../user/user.service';
 })
 export class HomeComponent implements OnInit {
 
-  private user: User;
-
-  constructor(private authService: AuthService, private  userService: UserService) {
+  constructor(private authService: AuthService, private stockService: StockService) {
   }
 
   ngOnInit() {
     if (!this.authService.isLoggedIn()) {
-      this.authService.reloadPage();
+      this.authService.toLoginPage();
     }
+
+    console.log(this.stockService.getNews().subscribe(
+      result => console.log(result)
+    ));
   }
-
-  gerUserDetails() {
-
-  }
-
 }

@@ -4,28 +4,25 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {UserComponent} from './user.component';
 import {SharedModule} from '../_shared/shared.module';
-import {AppModule} from '../app.module';
-
+import {AuthGuard} from '../core';
 
 const USER_ROUTES: Routes = [
 
   {
-    path: '',
-    component: UserComponent
+    path: 'user',
+    component: UserComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
 @NgModule({
-    declarations: [UserComponent],
-    exports: [
-        UserComponent
-    ],
-    imports: [CommonModule,
-        SharedModule,
-        RouterModule.forChild(USER_ROUTES),
-        ReactiveFormsModule,
-        FormsModule
-    ]
+  declarations: [UserComponent],
+  imports: [CommonModule,
+    SharedModule,
+    RouterModule.forChild(USER_ROUTES),
+    ReactiveFormsModule,
+    FormsModule
+  ]
 })
 export class UserModule {
 }

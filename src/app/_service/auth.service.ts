@@ -21,7 +21,6 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router,
               private tokenStorage: TokenStorage) {
-    console.log(tokenStorage.getUser());
     this.currentUserSubject = new BehaviorSubject<User>(tokenStorage.getUser());
     this.currentUser$ = this.currentUserSubject.asObservable();
   }
@@ -50,8 +49,14 @@ export class AuthService {
     return this.tokenStorage.getToken() === null ? false : true;
   }
 
-  reloadPage() {
+  toLoginPage() {
     this.router.navigate(['/login']);
+  }
+
+  init() {
+    if (!this.isLoggedIn()) {
+      this.toLoginPage();
+    }
   }
 
 }

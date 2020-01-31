@@ -6,6 +6,7 @@ import {HeaderComponent} from '../components/header/header.component';
 import {NavbarComponent} from '../components/navbar/navbar.component';
 import {SidebarComponent} from '../components/sidebar/sidebar.component';
 import {FooterComponent} from '../components/footer/footer.component';
+import {AuthService} from '../_service/auth.service';
 
 @NgModule({
   declarations: [AlertComponent, WebLayoutComponent, HeaderComponent, NavbarComponent, SidebarComponent, FooterComponent
@@ -16,7 +17,8 @@ import {FooterComponent} from '../components/footer/footer.component';
   ],
   imports: [
     CommonModule,
-  ]
+  ],
+  providers: [AuthService]
 })
 export class SharedModule {
 }

@@ -1,1 +1,50 @@
-<p>portfolio works!</p>
+<div class="container position-relative">
+  <div class="card-header details">
+    <div class="row">
+      <div class="col-sm-3">
+        Account details
+      </div>
+      <div class="col-sm-3">
+        Account details
+      </div>
+      <div class="col-sm-3">
+        Account details
+      </div>
+      <div class="col-sm-3">
+        <input type="search" placeholder="api search" />
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-sm-3 text-center">INSTRUMNENT</div>
+          <div class="col-sm-3 text-center">LAST</div>
+          <div class="col-sm-3 text-center">CHNG</div>
+          <div class="col-sm-3 text-center">POS</div>
+        </div>
+      </div>
+      <div class="equities">
+        <tr class="line" *ngFor="let d of data">
+          <div class="row">
+            <div class="col-sm-3">
+              <td class="align-middle">{{d}}</td>
+            </div>
+            <div class="col-sm-3">
+              <td class="align-middle">{{d}}</td>
+            </div>
+            <div class="col-sm-3">
+              <td class="align-middle">{{d}}</td>
+            </div>
+            <div class="col-sm-3">
+              <td class="align-middle">{{d}}</td>
+            </div>
+          </div>
+        </tr>
+      </div>
+    </div>
+  </div>
+
+</div>

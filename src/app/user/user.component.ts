@@ -1,5 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {AdminAuthGuard} from '../core/admin-auth-guard.service';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../_service/auth.service';
 import {Router} from '@angular/router';
 
@@ -10,14 +9,12 @@ import {Router} from '@angular/router';
 })
 export class UserComponent implements OnInit {
 
-  constructor(private adminAuthGuard: AdminAuthGuard, public authService: AuthService, private router: Router
+  constructor(public authService: AuthService, private router: Router
   ) {
   }
 
   ngOnInit() {
-    if (!this.authService.isLoggedIn()) {
-      this.authService.reloadPage();
-    }
+    this.authService.init();
   }
 
 

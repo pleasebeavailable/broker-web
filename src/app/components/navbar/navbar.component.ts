@@ -13,7 +13,7 @@ import {UserService} from '../../user/user.service';
 })
 export class NavbarComponent{
 
-  constructor(private authService: AuthService, public userService: UserService, private router: Router) {
+  constructor(private authService: AuthService, private userService: UserService, private router: Router) {
   }
 
   logout() {

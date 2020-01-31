@@ -4,13 +4,16 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {SharedModule} from '../_shared/shared.module';
+import {AuthGuard} from '../core';
+import {AdminAuthGuard} from '../core/admin-auth-guard.service';
 
 
 const PORTFOLIO_ROUTES: Routes = [
 
   {
-    path: '',
-    component: PortfolioComponent
+    path: 'portfolio',
+    component: PortfolioComponent,
+    canActivate: [AuthGuard, AdminAuthGuard]
   }
 ];
 

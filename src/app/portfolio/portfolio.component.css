@@ -1,0 +1,18 @@
+.details {
+  text-align: center;
+}
+.equities {
+  margin-top: 10px;
+}
+
+.line {
+  margin: 5px 10px 10px 0px;
+  display: inline-block;
+  border: solid lightslategrey 1px;
+  padding-left: 10px;
+  text-align: center;
+}
+.align-middle {
+  width:250px;
+  margin: 5px 2px 0px 2px;
+}

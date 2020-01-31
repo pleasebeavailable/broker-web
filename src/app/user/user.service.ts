@@ -24,14 +24,8 @@ export class UserService {
     this.authService.currentUser$.subscribe(user => this.user = user);
   }
 
-
-  public getUser(username: string): Observable<User> {
-    return this.httpClient.get<User>(AppConstants.BACKEND_URL + 'users/' + username, httpOptions);
-  }
-
   public getUserRole(userId: number): Observable<string> {
     httpOptions.headers = httpOptions.headers.append('Authorization', this.tokenStorage.getToken());
-    console.log(httpOptions);
     return this.httpClient.get<string>(AppConstants.BACKEND_URL + 'data/getuserrole/' + userId, httpOptions);
   }
 
