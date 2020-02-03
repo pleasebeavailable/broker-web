@@ -1,6 +1,8 @@
 .details {
   text-align: center;
+  overflow: hidden;
 }
+
 .equities {
   margin-top: 10px;
 }
@@ -12,7 +14,8 @@
   padding-left: 10px;
   text-align: center;
 }
+
 .align-middle {
-  width:250px;
+  width: 250px;
   margin: 5px 2px 0px 2px;
 }

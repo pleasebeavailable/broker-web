@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {StockService} from '../_service/stock.service';
+import {SearchService} from './search/search.service';
 import {Equity} from '../_shared/_model/Equity';
 import {AuthService} from '../_service/auth.service';
 
@@ -14,7 +14,7 @@ export class PortfolioComponent implements OnInit {
 
   @Input() result: Equity;
 
-  constructor(private stockService: StockService, private authService: AuthService) {
+  constructor(private stockService: SearchService, private authService: AuthService) {
   }
 
   ngOnInit() {

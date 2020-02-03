@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../_service/auth.service';
-import {StockService} from '../_service/stock.service';
+import {SearchService} from '../portfolio/search/search.service';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +9,7 @@ import {StockService} from '../_service/stock.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private authService: AuthService, private stockService: StockService) {
+  constructor(private authService: AuthService, private stockService: SearchService) {
   }
 
   ngOnInit() {

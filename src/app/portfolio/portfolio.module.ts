@@ -6,6 +6,7 @@ import {NgModule} from '@angular/core';
 import {SharedModule} from '../_shared/shared.module';
 import {AuthGuard} from '../core';
 import {AdminAuthGuard} from '../core/admin-auth-guard.service';
+import { SearchComponent } from './search/search.component';
 
 
 const PORTFOLIO_ROUTES: Routes = [
@@ -18,7 +19,7 @@ const PORTFOLIO_ROUTES: Routes = [
 ];
 
 @NgModule({
-  declarations: [PortfolioComponent],
+  declarations: [PortfolioComponent, SearchComponent],
   imports: [CommonModule,
     SharedModule,
     RouterModule.forChild(PORTFOLIO_ROUTES),
