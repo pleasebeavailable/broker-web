@@ -8,6 +8,10 @@ import {SharedModule} from './_shared/shared.module';
 
 const routes: Routes = [
   {
+    path: 'portfolio/equity',
+    loadChildren: './portfolio/equity-details/equity.module#EquityDetailsModule'
+  },
+  {
     path: 'portfolio',
     loadChildren: './portfolio/portfolio.module#PortfolioModule'
   },
@@ -26,9 +30,9 @@ const routes: Routes = [
 @NgModule({
   declarations: [],
   imports: [
+    RouterModule.forRoot(routes),
     CommonModule,
     SharedModule,
-    RouterModule.forRoot(routes)
   ],
   exports: [RouterModule]
 })

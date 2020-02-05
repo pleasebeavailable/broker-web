@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AppConstants} from '../../_shared/AppConstants';
 import {map} from 'rxjs/operators';
+import {Equity} from '../../_shared/_model/Equity';
+import {Observable} from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -15,8 +17,7 @@ const httpOptions = {
 })
 export class SearchService {
   news = 'stock/get-news?region=US&category=NBEV';
-  private API_KEY = '22MBOE0URZQQMFWA';
-  private array: any[];
+  private array: Equity[];
 
   constructor(private httpClient: HttpClient) {
   }
@@ -31,24 +32,37 @@ export class SearchService {
     const params: string = [
       `function=SYMBOL_SEARCH`,
       `keywords=${query}`,
-      `apikey=${this.API_KEY}`
+      `apikey=${AppConstants.API_KEY}`
     ].join('&');
     const queryUrl = `${AppConstants.ALPHA_VANTAGE}?${params}`;
 
-    return this.httpClient.get(queryUrl).pipe(
+    return this.httpClient.get<Equity>(queryUrl).pipe(
       map((response: any) => {
         const data = response.bestMatches;
         this.array = [];
         data.forEach(eq => {
-          this.array.push(eq['1. symbol']);
+          this.array.push(eq);
         });
         return this.array;
-
-        // return (response as any).streams.map(equity => {
-        //   console.log(equity);
-        //   return new Equity({name: equity.name});
-        // });
       })
     );
   }
+
+  getEquityDetails(symbol: string): Observable<Equity> {
+    const params: string = [
+      `function=GLOBAL_QUOTE`,
+      `symbol=${symbol}`,
+      `apikey=${AppConstants.API_KEY}`
+    ].join('&');
+    const queryUrl = `${AppConstants.ALPHA_VANTAGE}?${params}`;
+
+    return this.httpClient.get<Equity>(queryUrl).pipe(
+      map((response: any) => {
+        const data = response['Global Quote'];
+        return data;
+      })
+    );
+  }
+
+
 }

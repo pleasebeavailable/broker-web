@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {SearchService} from './search/search.service';
 import {Equity} from '../_shared/_model/Equity';
 import {AuthService} from '../_service/auth.service';
+import {SearchService} from './search/search.service';
 
 @Component({
   selector: 'app-portfolio',

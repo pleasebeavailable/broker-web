@@ -12,10 +12,8 @@ import {HomeComponent} from './home/home.component';
 import {RegisterComponent} from './register/register.component';
 import {SharedModule} from './_shared/shared.module';
 import {UserModule} from './user/user.module';
-import {PortfolioModule} from './portfolio/portfolio.module';
 import {SelectModule} from 'ng-select';
 import {CommonModule} from '@angular/common';
-
 
 
 @NgModule({
@@ -30,14 +28,13 @@ import {CommonModule} from '@angular/common';
     CoreModule,
     CommonModule,
     UserModule,
-    PortfolioModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
     SharedModule,
     SelectModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
